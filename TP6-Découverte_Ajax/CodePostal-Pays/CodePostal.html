@@ -34,7 +34,7 @@
     <div class="container">
         <div class="span8">
             <div class='hero-unit'>
-                <h2>Zippoptamus pour la France</h2>
+                <h2>Essai d'appel AJAX avec API Zippoptamus</h2>
                 <hr />
                 <form action="#" method="post" class="form fancy-form">
 
@@ -57,7 +57,7 @@
                         </div>
 
                         <div>
-                            <a href="http://api.zippopotam.us/static/sample_fr.html"
+                            <a href="#"
                                 class='btn btn-success btn-large'>Envoi</a>
                         </div>
                     </fieldset>
@@ -96,8 +96,9 @@
                     zip_box.addClass('error').removeClass('success');
                 }
                 else if ((zip_in.val().length == 5)) {
-
-                    // Make HTTP Request
+console.log(zip_in);
+console.log(zip_box)
+;                    // Make HTTP Request
                     $.ajax({
                         url: "http://api.zippopotam.us/fr/" + zip_in.val(),
                         cache: false,
