@@ -9,25 +9,141 @@
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+    <style>
+        body {
+            width: 80%;
+            margin: auto;
+        }
+
+        .container {
+            margin: 2rem;
+        }
+
+        label,
+        input {
+            flex: 1;
+            margin: .5rem;
+        }
+    </style>
+
     <title>TP Code Postal</title>
 </head>
 
 <body>
 
-    <h1>Requête Ajax sur API Code Postal</h1>
+    <div class="container">
+        <div class="span8">
+            <div class='hero-unit'>
+                <h2>Zippoptamus pour la France</h2>
+                <hr />
+                <form action="#" method="post" class="form fancy-form">
 
-    <div>
-        <label>Code Postal : </label>
-    <input type="text">
-    <input type="submit" value="recherche"> 
-</div>
-    <!-- implant JQuery/Ajax -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+                    <fieldset>
+                        <legend>Adresses françaises <i style='font-size:12px;'>(French Address)</i></legend>
+                        <br />
+                        <div>
+                            <div id="zipbox" class="control-group">
+                                <label for="zip">Code Postal</label>
+                                <input type="text" class='' pattern="[0-9]*" name="zip" id="zip"
+                                    placeholder="Tapez votre code postal" />
+                            </div>
+                        </div>
+                        <div>
+                            <div id="citybox" class="control-group">
+                                <label for="city">Ville</label>
+                                <input type="text" name="city" id="city"
+                                    placeholder="D'abord taper votre code postal" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <a href="http://api.zippopotam.us/static/sample_fr.html"
+                                class='btn btn-success btn-large'>Envoi</a>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+  
     <!-- Implant JQuery -->
     <script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+    <script>
+        $(function () {
+            $(document).ready(function () {
 
-    <script></script>
+                $('#city').attr('disabled', 'disabled');
+
+            });
+            $('#city').focus(function () {
+
+                $(this).autocomplete("search", "");
+
+            });
+
+            // OnKeyDown Function
+            $("#zip").keyup(function () {
+                var zip_in = $(this);
+                var zip_box = $('#zipbox');
+
+                if (zip_in.val().length < 5) {
+                    zip_box.removeClass('error success');
+                }
+                else if (zip_in.val().length > 5) {
+                    zip_box.addClass('error').removeClass('success');
+                }
+                else if ((zip_in.val().length == 5)) {
+
+                    // Make HTTP Request
+                    $.ajax({
+                        url: "http://api.zippopotam.us/fr/" + zip_in.val(),
+                        cache: false,
+                        dataType: "json",
+                        type: "GET",
+                        success: function (result, success) {
+
+                            // Enable the city box
+                            $('#city').removeAttr('disabled');
+
+                            // FR Post Code Returns multiple location
+                            suggestions = [];
+                            for (ii in result['places']) {
+                                suggestions.push(result['places'][ii]['place name']);
+                            }
+                            $("#city").autocomplete({ source: suggestions, delay: 50, disabled: false, minLength: 0 });
+                            if (suggestions.length > 0) {
+                                $('#city').placeholder = suggestions[0];
+                            }
+                            zip_box.addClass('success').removeClass('error');
+                        },
+                        error: function (result, success) {
+                            zip_box.removeClass('success').addClass('error');
+                        }
+                    });
+                }
+            });
+
+        });
+
+    </script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30975659-1']);
+        _gaq.push(['_setDomainName', 'zippopotam.us']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
 </body>
 
 </html>
