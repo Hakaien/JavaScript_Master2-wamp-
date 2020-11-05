@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requête Ajax en JavaScript</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1>Requête Ajax en JavaScript</h1>
+<br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-6"><button id="btnRechercher">Requête Ajax</button></div>
+            <div class="col-6"><ul id="maliste"></ul></div>
+        </div>
+    </div>
+
+    <script>
+        let btnRechercher = document.getElementById("btnRechercher");
+        let maliste = document.getElementById("maliste");
+
+        btnRechercher.addEventListener("click", function(){
+
+            let ajax = new XMLHttpRequest();
+            let fluxHTML="";
+
+            ajax.open("GET", "test.json", true);
+            ajax.send();
+
+            ajax.addEventListener("readystatechange", function(){
+
+                if(this.readyState == 4 && this.status == 200){
+                    console.log(this.responseText);
+                    obj = JSON.parse(this.responseText);
+                    console.log(obj);
+
+                    obj.forEach(element => {
+                        fluxHTML += "<li>"+element.nom+"</li>";
+                    });
+
+                }
+
+                maliste.innerHTML = fluxHTML;
+
+            });
+
+
+        });
+    </script>
+</body>
+</html>

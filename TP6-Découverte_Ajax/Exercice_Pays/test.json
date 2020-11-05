@@ -1,0 +1,7 @@
+[
+    {"nom" : "Tigre" , "type" : "Félin", "age":12},
+    {"nom" : "Lion" , "type" : "Félin", "age":5},
+    {"nom" : "Panthère" , "type" : "Félin", "age":2},
+    {"nom" : "Narval" , "type" : "Poisson", "age":12},
+    {"nom" : "Chat" , "type" : "Félin", "age":5}
+]

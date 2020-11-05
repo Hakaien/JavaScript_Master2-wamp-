@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- implant bootstrap -->
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href=""> -->
+
+    <title>Test java2</title>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6"><button id="btnRechercher">Requête Ajax</button></div>
+            <div class="col-6">
+                <ul id="maliste"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- implant JQuery/Ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <!-- Implant JQuery -->
+    <script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+    <script>
+        $("#btnRechercher").on("click", function () {
+
+            $.ajax({
+                url: "TestJava2.json",
+                type: "GET",
+                dataType: "json",
+
+                success: function (data) {
+
+                    var fluxHTML = "";
+                    console.log(data);
+
+                    data.forEach(element => {
+                        fluxHTML += "<li>" + element.nom + "</li>";
+                    });
+
+                    $("#maliste").empty();
+                    $("#maliste").append(fluxHTML);
+
+                },
+
+
+                error: function (resultat, status, erreur) {
+
+                    console.log(resultat.statusText);
+                    erreur = alert("Problème avec votre requête Ajax");
+
+                }
+
+            })
+
+        });
+    </script>
+
+
+    <!-- /// Script écrit en JS /// 
+        <script>
+        let btnRechercher = document.getElementById("btnRechercher");
+        let maliste = document.getElementById("maliste");
+
+        btnRechercher.addEventListener("click", function () {
+
+
+            let ajax = new XMLHttpRequest();
+            let fluxHTML = "";
+
+            ajax.open("GET", "TestJava2.json", true);
+            ajax.send();
+            console.log(ajax);
+            ajax.addEventListener("readystatechange", function () {
+
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                    obj = JSON.parse(this.responseText);
+                    console.log(obj);
+
+                    obj.forEach(element => {
+                        fluxHTML += "<li>" + element.nom + "</li>";
+                    });
+
+                    maliste.innerHTML = fluxHTML;
+                }
+
+            });
+
+        }); -->
+
+    </script>
+
+</body>
+
+</html>

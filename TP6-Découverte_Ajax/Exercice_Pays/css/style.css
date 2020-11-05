@@ -1,0 +1,12 @@
+body{
+    background-image: url("../img/bg.jpg");
+    color: white;
+}
+
+h1{
+    text-align: center;
+}
+
+li{
+    list-style: none;
+}

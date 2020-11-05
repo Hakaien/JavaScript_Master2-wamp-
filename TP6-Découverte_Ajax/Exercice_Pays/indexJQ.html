@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requête Ajax en JQuery</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Requête Ajax en JQuery</h1>
+    <br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-6"><button class="btn btn-warning" id="btnRechercher">Requête Ajax</button></div>
+            <div class="col-6"><ul id="maliste"></ul></div>
+        </div>
+    </div>
+
+
+    <script src="js/jquery.js"></script>
+    <script>
+        $("#btnRechercher").on("click", function(){
+
+            $.ajax({
+                url : "test.json",
+                type : "GET",
+                dataType : "json",
+
+                success : function(data){
+
+                    var fluxHTML="";
+                    console.log(data);
+
+                    data.forEach(element => {
+                        fluxHTML += "<li>"+element.nom+"</li>";
+                    });
+
+                    $("#maliste").empty();
+                    $("#maliste").append(fluxHTML);
+
+                },
+
+
+                error : function(resultat, status, erreur){
+
+                    console.log(resultat.statusText);
+                    erreur = alert("Problème avec votre requête Ajax");
+
+                }
+
+            })
+
+        });
+    </script>
+</body>
+</html>
