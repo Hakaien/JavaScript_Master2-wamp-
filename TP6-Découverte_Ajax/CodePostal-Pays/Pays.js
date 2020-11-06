@@ -28,7 +28,7 @@ $(window).on("load", function () {
                     champ+="<p>Code Pays : "+choixValue+" </p>"
                     champ+="<p>Nom du Pays : "+choixPays+" </p>"
 
-                    $(champ).appendTo($("#champ"));
+                    $("#champ").html(champ);
 
                 });
 
