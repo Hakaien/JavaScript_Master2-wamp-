@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- implant bootstrap -->
+    <link rel="stylesheet" type="text/css" href="./BootStrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/FormBoot.css">
+
+    <title>Avis De Recherche</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <h1>AVIS DE RECHERCHE</h1>
+        </header>
+
+        <section id="slide" class="row">
+            <div id="cartePirate" class="card col-lg-4 col-md-12 text-white bg-dark mb-3">
+                <div class="card-body">
+                    <img class="h-50 card-img-top" src="" alt="...">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"></p>
+                    <button class="report boutonForm btn btn-dark" id="btn0">Report</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="corpus" class="row">
+            <form id="formulaire" class="col-lg-7 col-md-12 bg-dark" method="POST" >
+                <div class="form-group">
+                    <h2>Votre identité : </h2>
+                    <div class="form-group row">
+                        <label for="inputNom3" class="col-sm-2 col-form-label">Nom</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="formValid form-control" id="inputNom3" required autocomplete="off"
+                                pattern="^[a-zA-Z_-]{4,16}$">
+                        </div>
+                        <span class="col-sm-3" id="spanNom3"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPrenom3" class="col-sm-2 col-form-label">Prénom</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="formValid form-control" id="inputPrenom3" required
+                                autocomplete="off" pattern="^[a-zA-Z_-]{4,16}$">
+                        </div>
+                        <span class="col-sm-3" id="spanPrenom3"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-7">
+                            <input type="email" class="formValid form-control" id="inputEmail3" required
+                                autocomplete="off"
+                                pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+                        </div>
+                        <span class="col-sm-3" id="spanEmail3"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputDate3" class="col-sm-2 col-form-label">Naissance</label>
+                        <div class="col-sm-7">
+                            <input type="date" class="formValid form-control" id="inputDate3" required
+                                autocomplete="off" pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$">
+                        </div>
+                        <span class="col-sm-3" id="spanDate3"></span>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <h2>Récompense : </h2>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-sm-5 pt-0">Moyen de paiement : </legend>
+                            <div class="col-sm-7">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                                        value="En Or">
+                                    <label class="form-check-label" for="gridRadios1"> En or </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                                        value="En Bons">
+                                    <label class="form-check-label" for="gridRadios2"> En bons </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
+                                        value="Autrement">
+                                    <label class="form-check-label" for="gridRadios3"> Autrement </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <h2>Informations relatives au recherché : </h2>
+                    <div><textarea class="form-control z-depth-1" id="inputTextarea6" rows="3"
+                            placeholder="Write something here..."></textarea></div>
+                </div>
+                <hr>
+                <div id="boutons" class="form-group">
+                    <input id="valider" class="boutonForm btn btn-dark" type="submit" value="Valider">
+                    <input id="reset" class="boutonForm btn btn-dark" type="reset" value="Annuler">
+                </div>
+            </form>
+
+            <div id="pan" class="flex-column col-lg-5 col-md-12 bg-dark">
+                <h2>Votre déclaration : </h2>
+                <hr>
+                <div id="pan2">
+                    <p id="p1"></p>
+                    <p id="p2"></p>
+                    <p id="p3"></p>
+                    <p id="p4"></p>
+                </div>
+                <hr>
+                <button id="signer" class="boutonForm btn btn-dark align-bottom">Signer</button>
+            </div>
+        </section>
+
+
+    </div>
+    <!-- Implant JQuery -->
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script src="BootStrap/js/bootstrap.js"></script>
+    <script type="text/JavaScript" src="js/FormBoot.js"></script>
+</body>
+
+</html>

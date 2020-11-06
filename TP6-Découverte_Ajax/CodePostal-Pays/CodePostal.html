@@ -37,7 +37,6 @@
                 <h2>Essai d'appel AJAX avec API Zippoptamus</h2>
                 <hr />
                 <form action="#" method="post" class="form fancy-form">
-
                     <fieldset>
                         <legend>Adresses françaises <i style='font-size:12px;'>(French Address)</i></legend>
                         <br />
@@ -97,8 +96,8 @@
                 }
                 else if ((zip_in.val().length == 5)) {
 console.log(zip_in);
-console.log(zip_box)
-;                    // Make HTTP Request
+console.log(zip_box);
+                   // Make HTTP Request
                     $.ajax({
                         url: "http://api.zippopotam.us/fr/" + zip_in.val(),
                         cache: false,
