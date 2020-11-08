@@ -12,16 +12,15 @@ window.addEventListener("load", function () {
 function ajaxPays(mot) {
     console.clear();
     console.log("Mot saisi : " + mot);
-
     /* Création de l'objet ajax */
     var ajax = new XMLHttpRequest();
-    
+
     /* Création du traitement lors de la fin de l'appel */
     ajax.addEventListener("load", function () {
         console.log("HTTP status = " + this.status);
         console.log("Etat traitement requête = " + this.readyState);
         console.log("**********************************************");
-
+        
         if (this.status == 200 && this.readyState == 4) {
             /* Retour HTTP réussi et état du traitement de la requête */
             var html = "";
@@ -44,4 +43,3 @@ function ajaxPays(mot) {
     /* Lancement de l'appel */
     ajax.send();
 }
-    /* Définition du type d'appel et de l'url à charger */
