@@ -17,27 +17,55 @@
 
     <h1>Tous Les Pays</h1>
 
-
-    <form method="POST">
-        <fieldset>
-            <div id="part1">
-                <label>Choisir un Pays : </label>
-                <input type="test" id="chercher" name="chercher">
-                <input type="button" id="btnRechercher" value="rechercher">
+    <div class="container row">
+        <div id="colonne" class="col-4">
+            <div id="btns">
+                <h2><button id="btn1" class="bg-dark">Part 1</button></h2>
+                <h2><button id="btn2" class="bg-dark">Part 2</button></h2>
+                <h2><button id="btn3" class="bg-dark">Part 3</button></h2>
             </div>
-            <br>
-            <div id="part2">
-                Résultat : <select name="pays" id="pays">
-                    <option id="option1" value="">--choisir un pays--</option>
-                </select>
-                <input type="button" id="btnAfficher" value="Afficher">
-            </div>
-        </fieldset>
-        <div id="champ">
-            
         </div>
-    </form>
+        <div id="contenu" class="col-7">
+            <form method="POST" id="part1">
+                <fieldset>
+                    <div>
+                        Résultat : <select name="pays" id="pays">
+                            <option id="option1" value="">--choisir un pays--</option>
+                        </select>
+                        <input type="button" id="btnAfficher" value="Afficher">
+                    </div>
+                </fieldset>
+                <div class="champ" id="champ1">
 
+                </div>
+            </form>
+            <form method="POST" id="part2">
+                <fieldset>
+                    <div>
+                        <label>Choisir un Pays : </label>
+                        <input type="test" id="chercher" name="chercher">
+                        <input type="button" id="btnRechercher" value="rechercher">
+                    </div>
+                </fieldset>
+                <div class="champ" id="champ2">
+
+                </div>
+            </form>
+            <form method="POST" id="part3">
+                <fieldset>
+                    <div>
+                        <label>Choisir un Pays (via API) : </label>
+                        <input type="test" id="chercher" name="chercher">
+                        <input type="button" id="btnRechercher" value="rechercher">
+                    </div>
+                </fieldset>
+                <div class="champ" id="champ2">
+
+                </div>
+            </form>
+        </div>
+
+    </div>
 
     <!-- Implant JQuery -->
     <script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="

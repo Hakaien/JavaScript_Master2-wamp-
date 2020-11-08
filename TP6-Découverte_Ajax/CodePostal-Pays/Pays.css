@@ -16,17 +16,52 @@ h1 {
     padding: 1rem;
 }
 
+/* colonne de gauche pour alterner les "modes" */
+
+#colonne {
+    background: url("./img/bg.jpg");
+    background-position: bottom;
+    border-radius: 10px;
+    box-shadow: 10px 5px 10px black;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+#btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 60%;
+}
+
+#btns button {
+    border-radius: 10px;
+    padding: .2rem;
+    width: 50%;
+    box-shadow: 5px 5px 10px black;
+}
+
+/* Mise en forme globales pour le conteneur  */
+
 form {
     background: url("./img/bg.jpg");
     border-radius: 10px;
     box-shadow: 10px 10px 10px black;
     height: 600px;
     margin: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
-#champ {
+.champ {
     text-align: start;
     margin: 1rem;
 }
 
+/* disparition des part 2 et 3 au démarrage */
+#part2 {
+    display: none;
+}
+
+#part3 {
+    display: none;
+}
