@@ -16,7 +16,7 @@ function ajaxPays(mot) {
     var ajax = new XMLHttpRequest();
 
     /* Création du traitement lors de la fin de l'appel */
-    ajax.addEventListener("load", function () {
+    ajax.addEventListener("readystatechange", function () {
         console.log("HTTP status = " + this.status);
         console.log("Etat traitement requête = " + this.readyState);
         console.log("**********************************************");
@@ -35,11 +35,30 @@ function ajaxPays(mot) {
             });
             document.getElementById("pays").innerHTML = html;
         }
-    });
+    }); 
     /* Définition du type d'appel et de l'url à charger */
-    ajax.open("POST", "pays.json", true);
+    ajax.open("GET", "pays.json", true);
     /* Définition de l'appel en mode POST (obligatoirement après le open) */
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     /* Lancement de l'appel */
     ajax.send();
 }
+
+// morceau pour Pays.js
+// $("#chercher2").keyup(function () {
+//     ajaxPays($(this).val());
+// });
+
+// function ajaxPays(mot) {
+
+//     var fluxHTML = "";
+//     data.forEach(element => {
+//         var position = element.nom_fr_fr.substring(0, mot.length).toUpperCase().search(mot.toUpperCase());
+
+//         if (position != -1) {
+//             fluxHTML += "<li>" + element.nom_fr_fr + "</li>";
+//         }
+//     });
+
+//     $("#champ2").append(fluxHTML);
+// }

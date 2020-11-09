@@ -16,6 +16,53 @@
 
     <script type="text/JavaScript" src="ExJava.js"></script>
 
+
+    <!-- Test autocompletion -->
+
+    <div class="ui-widget">
+        <label for="city">Your city: </label>
+        <input id="city">
+
+    </div>
+
+    <div class="ui-widget" style="margin-top:2em; font-family:Arial">
+        Result:
+        <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
+    </div>
+
+
+    <!-- Implant JQuery -->
+    <script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+
+
+    <script>
+        $(function () {
+            function log(message) {
+                
+            }
+
+            $("#city").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "http://gd.geobytes.com/AutoCompleteCity",
+                        dataType: "jsonp",
+                        data: {
+                            q: request.term
+                        },
+                        success: function (data) {
+                            response(data);
+                            console.log(data)
+                        }
+                    });
+                },
+                minLength: 3,
+           
+            });
+        });
+    </script>
 </body>
 
 </html>
