@@ -4,7 +4,7 @@ $(window).on("load", function () {
 
     $("#btn1").on("click", function () {
 
-        $("#part1").css({display: "block", visibility:"visible"});
+        $("#part1").css({ display: "block", visibility: "visible" });
         $("#part2").css("display", "none");
         $("#part3").css("display", "none");
 
@@ -38,14 +38,6 @@ $(window).on("load", function () {
 
                         $("#champ1").html(champ);
 
-                    });
-
-                    $("#btnRechercher").on("click", function () {
-                        let temp = $("#chercher").val();
-                        console.log(temp);
-                        let pays = data[40].alpha2;
-                        console.log(pays);
-                        console.log(data.length);
                     });
 
                 },
@@ -90,8 +82,8 @@ $(window).on("load", function () {
                     $("li").on("click", function () {
                         $("#chercher2").val($(this).html());
                         $("#sousMenu").css("display", "none");
-                        let var1=$(this).attr("id");
-                        let var2= $(this).html();
+                        let var1 = $(this).attr("id");
+                        let var2 = $(this).html();
                         let champ = "";
                         champ += "<img src=\"./flags/" + var1 + ".png\" style='height:200px'>"
                         champ += "<p>Code Pays : " + var1 + " </p>"
@@ -117,20 +109,28 @@ $(window).on("load", function () {
         $("#part1").css("display", "none");
         $("#part2").css("display", "none");
 
-        // var options = {
-        //     url:"http://restcountries.eu/",
-        //     type:"GET",
-        //     getValue: "name",
+        var options = {
+            url: "http://restcountries.eu/",
+            type: "GET",
+            getValue: "name",
 
-        //     list: {
-        //         match : {
-        //             enabled: true
-        //         }
-        //     },
-        //     theme: "square"
-        // };
+            list: {
+                match: {
+                    enabled: true
+                }
+            },
+            theme: "square"
+        };
 
-        // $("#chercher3").easyAutocomplete(options);
+        $("#chercher3").easyAutocomplete(options);
+
+        $("#btnRechercher").on("click", function () {
+            let temp = $("#chercher").val();
+            console.log(temp);
+            let pays = data[40].alpha2;
+            console.log(pays);
+            console.log(data.length);
+        });
 
     });
 });
