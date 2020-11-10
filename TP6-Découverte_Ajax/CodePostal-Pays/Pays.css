@@ -58,7 +58,7 @@ form {
     position: absolute;
 }
 
-/* disparition des part 2 et 3 au démarrage */
+/* disparition des part 1.2.3 au démarrage */
 
 #part1 {
     visibility: hidden;
@@ -72,12 +72,18 @@ form {
     display: none;
 }
 
-/* règle générale pour les inputs de recherche */
+/* règle générale pour les inputs de recherche + format boutons affichage*/
 
-#chercher1, #chercher2, #chercher3 {
+#pays, #chercher1, #chercher2, #btnAfficher, #btnRechercher {
     width: 60%;
     margin: auto;
     box-shadow: 10px 10px 5px black;
+}
+
+/* Ajout part1 marge */
+
+#part1 select, #part1 .champ {
+    margin: .4rem;
 }
 
 /* Menu déroulant 2e partie appel pays.json */
@@ -99,13 +105,22 @@ form {
     cursor: pointer;
 }
 
-/* Spécification règle part3 */
+/* Spécification règles part3 */
 
 #part3 label, #part3 input {
-    margin: 1rem;
-    align-self: center;
+    margin: .4rem;
 }
 
-#btnRechercher {
-    padding: .4rem;
+#chercher3 {
+    margin: auto;
+    box-shadow: 10px 10px 5px black;
+    border-radius: 0%;
+}
+
+#eac-container-chercher3 {
+    color: black;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    opacity: 75%;
+    z-index: 10;
 }

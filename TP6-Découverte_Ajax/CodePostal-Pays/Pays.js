@@ -1,7 +1,7 @@
 $(window).on("load", function () {
 
 
-
+    // ouverture part1
     $("#btn1").on("click", function () {
 
         $("#part1").css({ display: "block", visibility: "visible" });
@@ -16,7 +16,6 @@ $(window).on("load", function () {
                 dataType: "",
 
                 success: function (data) {
-                    console.log(data);
                     // création du déroulant avec le nom des pays
                     for (let i = 0; i < data.length; i++) {
                         let choixValue = data[i].alpha2;
@@ -24,12 +23,10 @@ $(window).on("load", function () {
                         let deroulant = "<option value=\"" + choixValue + "\">" + choixText + "</option>"
                         $(deroulant).appendTo($("#pays"));
                     }
-
+                    // affichage des infos pays après clik sur menu déroulant
                     $("#btnAfficher").on("click", function () {
                         let choixPays = $("#pays option:selected").text();
                         let choixValue = $("#pays option:selected").val();
-                        console.log(choixPays);
-                        console.log(choixValue);
 
                         let champ = "";
                         champ += "<img src=\"./flags/" + choixValue + ".png\" style='height:200px'>"
@@ -39,16 +36,16 @@ $(window).on("load", function () {
                         $("#champ1").html(champ);
 
                     });
-
                 },
-
                 error: function () {
                     console.log("error 66");
                 }
             })
+            // timer de l'appel ajax par setInterval
         }, 1000);
     })
 
+    // ouverture part2 
     $("#btn2").on("click", function () {
         $("#part2").css("display", "block");
         $("#part1").css("display", "none");
@@ -77,8 +74,7 @@ $(window).on("load", function () {
                     $("#sousMenu").css("display", "block");
                     $("#sousMenu").empty();
                     $("#sousMenu").append(fluxHTML);
-                    console.log(fluxHTML);
-
+                    // implant au clik : écriture dans l'input + infos dans #champ
                     $("li").on("click", function () {
                         $("#chercher2").val($(this).html());
                         $("#sousMenu").css("display", "none");
@@ -97,23 +93,20 @@ $(window).on("load", function () {
                     console.log(resultat.statusText);
                 }
             })
-
-
         }
-
-
     });
 
+    // ouverture part3
     $("#btn3").on("click", function () {
         $("#part3").css("display", "block");
         $("#part1").css("display", "none");
         $("#part2").css("display", "none");
 
+        // autocomplete via l'API
         var options = {
-            url: "http://restcountries.eu/",
-            type: "GET",
+            url: "https://restcountries.eu/rest/v2/all",
             getValue: "name",
-
+            dataType: "json",
             list: {
                 match: {
                     enabled: true
@@ -121,15 +114,25 @@ $(window).on("load", function () {
             },
             theme: "square"
         };
-
         $("#chercher3").easyAutocomplete(options);
-
         $("#btnRechercher").on("click", function () {
-            let temp = $("#chercher").val();
-            console.log(temp);
-            let pays = data[40].alpha2;
-            console.log(pays);
-            console.log(data.length);
+            console.log("bonjour");
+
+            $.ajax({
+                url: "https://restcountries.eu/rest/v2/all",
+                type: "GET",
+                dataType: "json",
+
+                succes: function (data) {
+                    console.log(data);
+                    console.log("ok");
+                },
+
+                error: function (resultat, status, erreur) {
+                    console.log(resultat.statusText);
+                }
+            })
+
         });
 
     });
